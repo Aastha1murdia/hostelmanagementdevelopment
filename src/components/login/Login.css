@@ -1,0 +1,62 @@
+input[type="text"],
+[type="password"] {
+  width: 23.5vw;
+  border-radius: 2px;
+  background-color: #ebe6e6;
+  height: 30px;
+  display: block;
+  padding: 12px 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+button a {
+  text-decoration: none;
+  color: white;
+}
+.span-login {
+  color: white;
+  transition: transform 0.2s;
+}
+.span-login:hover {
+  color: white;
+  transform: scale(1.5);
+}
+.error {
+  color: tomato;
+  font-size: smaller;
+}
+.login {
+  border-radius: 5px;
+  background-color: white;
+  width: 400px;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 23vh;
+}
+.submit {
+  margin-top: 30px;
+  background-color: rgb(241, 121, 9);
+  border-radius: 5px;
+  border: none;
+  color: White;
+}
+.submit:hover {
+  background-color: rgb(226, 114, 8);
+  color: White;
+}
+.userlbl,
+.pswdlbl {
+  margin-top: 10px;
+}
+
+input[type="text"],
+[type="password"]:focus {
+  outline: none;
+}
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
