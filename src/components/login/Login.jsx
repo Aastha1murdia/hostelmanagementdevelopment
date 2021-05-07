@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import "./Login.css";
 import zxcvbn from "zxcvbn";
 import { formik, useFormik } from "formik";
+import { useHistory, useLocation } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 function Login() {
+  const history = useHistory();
+  const location = useLocation();
   const [disable, setDisable] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
+
   const validate = (values) => {
     const password = values.password;
     const evaluation = zxcvbn(password);
@@ -43,15 +48,18 @@ function Login() {
     },
     validate,
     onSubmit(values) {
-      alert(`
-      Email entered is: ${values.email}
-      Password entered is: ${values.password}`);
+      const data = { email: values.email, password: values.password };
+      localStorage.setItem("login", JSON.stringify(data));
+      setIsLogin(true);
+      setTimeout(() => {
+        history.push("/registration");
+      }, 1000);
     },
   });
 
   return (
     <div>
-      <Navbar />
+      <Navbar isLogin={isLogin} />
       <div className="login">
         <form onSubmit={formik.handleSubmit} autoComplete="off">
           <label htmlFor="email" className="userlbl text-left">
@@ -91,16 +99,16 @@ function Login() {
               <div className="error">{formik.errors.password}</div>
             ) : null}
           </div>
-          <a href="/registration" className="text-decoration-none span-login">
-            <button
-              type="submit"
-              value="Log In"
-              disabled={disable}
-              className="submit btn btn-lg btn-block"
-            >
-              Login
-            </button>
-          </a>
+          {/* <NavLink to="/registration" className="text-decoration-none"> */}
+          <button
+            type="submit"
+            value="Log In"
+            disabled={disable}
+            className="submit btn btn-lg btn-block"
+          >
+            Login
+          </button>
+          {/* </NavLink> */}
         </form>
       </div>
     </div>

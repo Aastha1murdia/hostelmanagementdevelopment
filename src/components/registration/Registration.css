@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 .outer_div {
-  height: 1000px;
+  height: 1100px;
 }
 .error {
   color: tomato;
@@ -18,7 +18,7 @@ button:disabled {
   align-items: center;
   flex-direction: column;
   width: 600px;
-  height: 900px;
+  height: 1000px;
   background-color: white;
   margin-top: 60px;
 }

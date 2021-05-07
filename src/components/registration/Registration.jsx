@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const Registration = () => {
   const [disable, setDisable] = useState(true);
   const [radio, setRadio] = useState("male");
+  const [dropdown, setDropdown] = useState("select");
   const validate = (values) => {
     let errors = {};
     if (values.firstName.length === 0) {
@@ -151,20 +152,21 @@ const Registration = () => {
                   <div className="error">{formik.errors.mobile}</div>
                 ) : null}
               </div>
-              <label htmlFor="year">Year:</label>
-              <select name="year" id="year" value={"kjdnsk"} required>
+              <label htmlFor="year">Year: </label>
+              <select
+                name="year"
+                id="year"
+                value={dropdown}
+                onChange={(e) => {
+                  setDropdown(e.target.value);
+                }}
+                required
+              >
                 <option value="select">--Select One--</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
-              </select>
-              <label htmlFor="seater">Seater:</label>
-              <select name="seater" id="seater" required>
-                <option value="select">--Select One--</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
               </select>
               <label htmlFor="gender">Gender:</label>
               <br />
@@ -191,18 +193,44 @@ const Registration = () => {
               <label htmlFor="female">Female</label>
               <br />
 
-              {radio == "male" ? (
+              {radio == "male" && dropdown == "1" && (
                 <select name="hostels" id="hostels" required>
                   <option value={"select"}>--Select One--</option>
-                  <option value={"1"}>MV</option>
-                  <option value={"2"}>NSCB</option>
-                  <option value={"3"}>PG</option>)
-                  <option value={"4"}>AN Khosla</option>)
+                  <option value={"1"}>AN Khosla Hostel</option>)
                 </select>
-              ) : (
+              )}
+
+              {radio == "male" && dropdown == "2" && (
                 <select name="hostels" id="hostels" required>
                   <option value={"select"}>--Select One--</option>
-                  <option value={"1"}>CTAE Girls Hostel</option>)
+                  <option value={"2"}>MV Hostel</option>
+                </select>
+              )}
+
+              {radio == "male" && dropdown == "3" && (
+                <select name="hostels" id="hostels" required>
+                  <option value={"select"}>--Select One--</option>
+                  <option value={"3"}>NSCB</option>
+                </select>
+              )}
+
+              {radio == "male" && dropdown == "4" && (
+                <select name="hostels" id="hostels" required>
+                  <option value={"select"}>--Select One--</option>
+                  <option value={"5"}>PG Hostel</option>
+                  <option value={"4"}>GSM Hostel</option>
+                </select>
+              )}
+              {radio == "male" && dropdown == "select" && (
+                <select name="hostels" id="hostels" required>
+                  <option value={"select"}>--Select One--</option>
+                </select>
+              )}
+
+              {radio == "female" && (
+                <select name="hostels" id="hostels" required>
+                  <option value={"select"}>--Select One--</option>
+                  <option value={"1"}>CTAE Girls Hostel</option>
                 </select>
               )}
 
