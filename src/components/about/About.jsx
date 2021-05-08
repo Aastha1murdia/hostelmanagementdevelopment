@@ -28,71 +28,71 @@ function About() {
       <h4 className="hostel">Hostel</h4>
       <div className="containter">
         <div className="row ">
-          <div className=" col-md-12 cards-class mt-5 ">
-            <div className=" col-md-4 ">
-              <Card
-                hostel="Netaji Subhash Chandra Boss Hostel"
-                room="101-146"
-                totalRoom="46"
-                Scharge="Not Available"
-                Dcharge="40000 Rs"
-                mess="28000 Rs"
-              />
-            </div>
-            <div className=" col-md-4  ">
-              <Card
-                hostel="A.N Khosla Hostel"
-                room="1-55"
-                totalRoom="55"
-                Scharge="Not Available"
-                Dcharge="41000 Rs"
-                mess="30000 Rs"
-              />
-            </div>
-            <div className=" col-md-4 ">
-              <Card
-                hostel="GSM Hostel"
-                room="101-157"
-                totalRoom="57"
-                Scharge="58000 Rs"
-                Dcharge="Not Available "
-                mess="30000 Rs"
-              />
-            </div>
+          {/* <div className=" col-md-12 cards-class mt-5 "> */}
+          <div className="mb-5 col-md-4 col-sm-12">
+            <Card
+              hostel="Netaji Subhash Chandra Boss Hostel"
+              room="101-146"
+              totalRoom="46"
+              Scharge="Not Available"
+              Dcharge="40000 Rs"
+              mess="28000 Rs"
+            />
           </div>
-          <div className=" col-md-12 mt-5 mb-5 cards-class ">
-            <div className=" col-md-4 ">
-              <Card
-                hostel="PHD Hostel"
-                room="1-18"
-                totalRoom="18"
-                Scharge="Not Available"
-                Dcharge="48000"
-                mess="35000"
-              />
-            </div>
-            <div className=" col-md-4 ">
-              <Card
-                hostel="MV Hostel"
-                room="101-173"
-                totalRoom="73"
-                Scharge="Not Available"
-                Dcharge="40000"
-                mess="32000"
-              />
-            </div>
-            <div className=" col-md-4 ">
-              <Card
-                hostel="CTAE Girl's Hostel"
-                room="A-Block(1-87), B-Block(88-135)"
-                totalRoom="135"
-                Scharge="Not Available"
-                Dcharge="41000"
-                mess="30000"
-              />
-            </div>
+          <div className="mb-5 col-md-4 col-sm-12 ">
+            <Card
+              hostel="A.N Khosla Hostel"
+              room="1-55"
+              totalRoom="55"
+              Scharge="Not Available"
+              Dcharge="41000 Rs"
+              mess="30000 Rs"
+            />
+          </div>
+          <div className=" mb-5 col-md-4 col-sm-12">
+            <Card
+              hostel="GSM Hostel"
+              room="101-157"
+              totalRoom="57"
+              Scharge="58000 Rs"
+              Dcharge="Not Available "
+              mess="30000 Rs"
+            />
+          </div>
+          {/* </div> */}
+          {/* <div className=" col-md-12 mt-5 mb-5 cards-class "> */}
+          <div className="mb-5 col-md-4 col-sm-12">
+            <Card
+              hostel="PHD Hostel"
+              room="1-18"
+              totalRoom="18"
+              Scharge="Not Available"
+              Dcharge="48000"
+              mess="35000"
+            />
+          </div>
+          <div className="mb-5 col-md-4 col-sm-12 ">
+            <Card
+              hostel="MV Hostel"
+              room="101-173"
+              totalRoom="73"
+              Scharge="Not Available"
+              Dcharge="40000"
+              mess="32000"
+            />
+          </div>
+          <div className=" mb-5 col-md-4 col-sm-12">
+            <Card
+              hostel="CTAE Girl's Hostel"
+              room="A-Block(1-87), B-Block(88-135)"
+              totalRoom="135"
+              Scharge="Not Available"
+              Dcharge="41000"
+              mess="30000"
+            />
           </div>
         </div>
+        {/* </div> */}
       </div>
     </div>
   );

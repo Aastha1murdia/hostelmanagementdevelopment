@@ -48,7 +48,7 @@ const Navbar = (props) => {
 
   const handleLogout = () => {
     const data = localStorage.getItem("login");
-    if (whatisup == "Log out") {
+    if (whatisup === "Log out") {
       localStorage.removeItem("login");
       setWhatIsUp("Log in");
     }

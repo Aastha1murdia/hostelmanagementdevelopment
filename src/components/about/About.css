@@ -3,7 +3,7 @@
 }
 .about-body {
   width: 100vw;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 h2 {
   color: white;
@@ -36,4 +36,6 @@ hr {
 }
 .cards-class {
   display: flex;
+}
+@media (max-width: 1000px) {
 }

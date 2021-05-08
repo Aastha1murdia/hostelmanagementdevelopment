@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import "./Login.css";
 import zxcvbn from "zxcvbn";
-import { formik, useFormik } from "formik";
-import { useHistory, useLocation } from "react-router-dom";
+import { useFormik } from "formik";
+import { useHistory } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
-import { NavLink } from "react-router-dom";
 function Login() {
   const history = useHistory();
-  const location = useLocation();
   const [disable, setDisable] = useState(true);
   const [isLogin, setIsLogin] = useState(false);
 

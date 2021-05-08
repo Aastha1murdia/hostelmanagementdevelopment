@@ -174,7 +174,7 @@ const Registration = () => {
               <input
                 type="radio"
                 value="male"
-                checked={radio == "male"}
+                checked={radio === "male"}
                 onChange={(e) => {
                   setRadio(e.target.value);
                 }}
@@ -184,7 +184,7 @@ const Registration = () => {
               <input
                 type="radio"
                 value="female"
-                checked={radio == "female"}
+                checked={radio === "female"}
                 onChange={(e) => {
                   setRadio(e.target.value);
                 }}
@@ -193,41 +193,41 @@ const Registration = () => {
               <label htmlFor="female">Female</label>
               <br />
 
-              {radio == "male" && dropdown == "1" && (
+              {radio === "male" && dropdown === "1" && (
                 <select name="hostels" id="hostels" required>
                   <option value={"select"}>--Select One--</option>
                   <option value={"1"}>AN Khosla Hostel</option>)
                 </select>
               )}
 
-              {radio == "male" && dropdown == "2" && (
+              {radio === "male" && dropdown === "2" && (
                 <select name="hostels" id="hostels" required>
                   <option value={"select"}>--Select One--</option>
                   <option value={"2"}>MV Hostel</option>
                 </select>
               )}
 
-              {radio == "male" && dropdown == "3" && (
+              {radio === "male" && dropdown === "3" && (
                 <select name="hostels" id="hostels" required>
                   <option value={"select"}>--Select One--</option>
                   <option value={"3"}>NSCB</option>
                 </select>
               )}
 
-              {radio == "male" && dropdown == "4" && (
+              {radio === "male" && dropdown === "4" && (
                 <select name="hostels" id="hostels" required>
                   <option value={"select"}>--Select One--</option>
                   <option value={"5"}>PG Hostel</option>
                   <option value={"4"}>GSM Hostel</option>
                 </select>
               )}
-              {radio == "male" && dropdown == "select" && (
+              {radio === "male" && dropdown === "select" && (
                 <select name="hostels" id="hostels" required>
                   <option value={"select"}>--Select One--</option>
                 </select>
               )}
 
-              {radio == "female" && (
+              {radio === "female" && (
                 <select name="hostels" id="hostels" required>
                   <option value={"select"}>--Select One--</option>
                   <option value={"1"}>CTAE Girls Hostel</option>
