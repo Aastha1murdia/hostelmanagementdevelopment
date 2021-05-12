@@ -1,13 +1,33 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import "./Login.css";
 import zxcvbn from "zxcvbn";
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
+import { AuthContext } from '../../auth-content';
 function Login() {
+  const auth = useContext(AuthContext);
   const history = useHistory();
   const [disable, setDisable] = useState(true);
   const [isLogin, setIsLogin] = useState(false);
+
+  const saveLogin = async  (values) => {
+   const response = await fetch('http://localhost:8080/login',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+      },
+      body: JSON.stringify({
+        email:values.email,
+        password:values.password
+      }),
+    })
+      
+    const responseData = await response.json();
+    console.log(responseData);
+   
+    auth.login();
+  }
 
   const validate = (values) => {
     const password = values.password;
@@ -39,6 +59,7 @@ function Login() {
     }
     return errors;
   };
+  
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -48,6 +69,8 @@ function Login() {
     onSubmit(values) {
       const data = { email: values.email, password: values.password };
       localStorage.setItem("login", JSON.stringify(data));
+      saveLogin(values)
+      //auth.login()
       setIsLogin(true);
       setTimeout(() => {
         history.push("/registration");
