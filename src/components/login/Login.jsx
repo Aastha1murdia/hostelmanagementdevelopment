@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useState,useContext,useEffect } from "react";
 import "./Login.css";
 import zxcvbn from "zxcvbn";
 import { useFormik } from "formik";
@@ -10,8 +10,19 @@ function Login() {
   const history = useHistory();
   const [disable, setDisable] = useState(true);
   const [isLogin, setIsLogin] = useState(false);
+  
+  const [error,setError] = useState();
+  let saveLogin;
+  useEffect(() => {
+    if(isLogin){
+      setIsLogin(true);
+    }
+  },saveLogin);
 
-  const saveLogin = async  (values) => {
+
+  saveLogin = async  (values) => {
+    setIsLogin(false);
+    try{
    const response = await fetch('http://localhost:8080/login',{
       method:'POST',
       headers:{
@@ -25,10 +36,20 @@ function Login() {
       
     const responseData = await response.json();
     console.log(responseData);
+    if(!response.ok){
+      throw new Error(responseData);
+     }
    
+     setIsLogin(true);
     auth.login();
+  } catch(err) {
+    console.log(err);
+    
+    setError(err.message || "something went wrong");
+  }
   }
 
+  
   const validate = (values) => {
     const password = values.password;
     const evaluation = zxcvbn(password);
@@ -71,10 +92,11 @@ function Login() {
       localStorage.setItem("login", JSON.stringify(data));
       saveLogin(values)
       //auth.login()
-      setIsLogin(true);
+      if(isLogin){
       setTimeout(() => {
         history.push("/registration");
       }, 1000);
+    }
     },
   });
 
