@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React ,{ useState } from "react";
 import { Switch, Redirect, Route } from "react-router-dom";
 import Home from "../home/Home";
 import About from "../about/About";
@@ -10,6 +10,10 @@ import Registration from "../registration/Registration";
 import Payment from "../payment/Payment";
 
 function App() {
+  // const [token, setToken] = useState();
+  // if(!token) {
+  //   return <Login setToken={setToken} />
+  // }
   return (
     <>
       <Route>
@@ -29,7 +33,7 @@ function App() {
           <Route path="/login" exact>
             <Login />
           </Route>
-          <Route path="/registration" exact>
+          <Route path="/:uid/registration" exact>
             <Registration />
           </Route>
           <Route path="/payment" exact>
