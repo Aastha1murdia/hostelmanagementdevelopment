@@ -9,18 +9,22 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
+  
   const auth = useContext(AuthContext);
   const history = useHistory();
   const [disable, setDisable] = useState(true);
   const [isLogin, setIsLogin] = useState(false);
 
   const [error, setError] = useState();
+  
+ 
 
   const saveLogin = async (values) => {
     try {
       const data = {
         email: values.email,
         password: values.password,
+      
       };
       const response = await fetch("http://localhost:8080/login", {
         method: "POST",
@@ -30,7 +34,8 @@ function Login() {
         body: JSON.stringify(data),
       });
 
-      const responseData = await response.json();
+      const id = await response.json();
+       //console.log(responseData);
       if (!response.ok) {
         toast.warn(`🎃 invalid credentials entered please try again 🎃`, {
           position: "top-center",
@@ -41,11 +46,12 @@ function Login() {
           draggable: true,
           progress: undefined,
         });
-        throw new Error(responseData);
+        throw new Error(id);
       } else {
         setIsLogin(true);
         auth.login();
-        history.push("/register");
+        
+        history.push(`/${id}/registration`);
       }
     } catch (err) {
       console.log(err);
