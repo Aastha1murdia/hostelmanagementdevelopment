@@ -1,55 +1,59 @@
-import React, { useState,useContext,useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./Login.css";
 import zxcvbn from "zxcvbn";
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
-import { AuthContext } from '../../auth-content';
+import { AuthContext } from "../../auth-content";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function Login() {
   const auth = useContext(AuthContext);
   const history = useHistory();
   const [disable, setDisable] = useState(true);
   const [isLogin, setIsLogin] = useState(false);
-  
-  const [error,setError] = useState();
-  let saveLogin;
-  useEffect(() => {
-    if(isLogin){
-      setIsLogin(true);
+
+  const [error, setError] = useState();
+
+  const saveLogin = async (values) => {
+    try {
+      const data = {
+        email: values.email,
+        password: values.password,
+      };
+      const response = await fetch("http://localhost:8080/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const responseData = await response.json();
+      if (!response.ok) {
+        toast.warn(`🎃 invalid credentials entered please try again 🎃`, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        throw new Error(responseData);
+      } else {
+        setIsLogin(true);
+        auth.login();
+        history.push("/register");
+      }
+    } catch (err) {
+      console.log(err);
+
+      setError(err.message || "something went wrong");
     }
-  },saveLogin);
+  };
 
-
-  saveLogin = async  (values) => {
-    setIsLogin(false);
-    try{
-   const response = await fetch('http://localhost:8080/login',{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-      },
-      body: JSON.stringify({
-        email:values.email,
-        password:values.password
-      }),
-    })
-      
-    const responseData = await response.json();
-    console.log(responseData);
-    if(!response.ok){
-      throw new Error(responseData);
-     }
-   
-     setIsLogin(true);
-    auth.login();
-  } catch(err) {
-    console.log(err);
-    
-    setError(err.message || "something went wrong");
-  }
-  }
-
-  
   const validate = (values) => {
     const password = values.password;
     const evaluation = zxcvbn(password);
@@ -80,7 +84,7 @@ function Login() {
     }
     return errors;
   };
-  
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -90,13 +94,7 @@ function Login() {
     onSubmit(values) {
       const data = { email: values.email, password: values.password };
       localStorage.setItem("login", JSON.stringify(data));
-      saveLogin(values)
-      //auth.login()
-      if(isLogin){
-      setTimeout(() => {
-        history.push("/registration");
-      }, 1000);
-    }
+      saveLogin(values);
     },
   });
 
@@ -154,6 +152,7 @@ function Login() {
           {/* </NavLink> */}
         </form>
       </div>
+      <ToastContainer style={{ width: "450px" }} />
     </div>
   );
 }
