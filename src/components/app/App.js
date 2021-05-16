@@ -1,5 +1,5 @@
 import "./App.css";
-import React ,{ useState } from "react";
+import React ,{ useState,useCallback } from "react";
 import { Switch, Redirect, Route } from "react-router-dom";
 import Home from "../home/Home";
 import About from "../about/About";
@@ -8,15 +8,32 @@ import Gallery from "../gallery/Gallery";
 import Login from "../login/Login";
 import Registration from "../registration/Registration";
 import Payment from "../payment/Payment";
+import { AuthContext } from '../../auth-content';
 
 function App() {
-  // const [token, setToken] = useState();
-  // if(!token) {
-  //   return <Login setToken={setToken} />
-  // }
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userId, setUserId] = useState(false);
+
+  const login = useCallback(uid => {
+    setIsLoggedIn(true);
+    setUserId(uid);
+  }, []);
+
+  const logout = useCallback(() => {
+    setIsLoggedIn(false);
+    setUserId(null);
+  }, []);
   return (
     <>
       <Route>
+      <AuthContext.Provider
+      value={{
+        isLoggedIn: isLoggedIn,
+        userId: userId,
+        login: login,
+        logout: logout
+      }}
+    >
         <Switch>
           <Route path="/" exact>
             <Home />
@@ -33,7 +50,7 @@ function App() {
           <Route path="/login" exact>
             <Login />
           </Route>
-          <Route path="/:uid/registration" exact>
+          <Route path="/registration" exact>
             <Registration />
           </Route>
           <Route path="/payment" exact>
@@ -41,7 +58,9 @@ function App() {
           </Route>
           <Redirect to="/" />
         </Switch>
+        </AuthContext.Provider>
       </Route>
+     
     </>
   );
 }
