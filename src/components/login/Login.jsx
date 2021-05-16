@@ -26,7 +26,7 @@ function Login() {
         password: values.password,
       
       };
-      const response = await fetch("http://localhost:8080/login", {
+      const responseData = await fetch("http://localhost:8080/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,9 +34,9 @@ function Login() {
         body: JSON.stringify(data),
       });
 
-      const id = await response.json();
+      const id = await responseData.json();
        //console.log(responseData);
-      if (!response.ok) {
+      if (!responseData.ok) {
         toast.warn(`🎃 invalid credentials entered please try again 🎃`, {
           position: "top-center",
           autoClose: 5000,
@@ -51,7 +51,7 @@ function Login() {
         setIsLogin(true);
         auth.login();
         
-        history.push(`/${id}/registration`);
+        history.push(`/registration`);
       }
     } catch (err) {
       console.log(err);
