@@ -252,29 +252,6 @@ const Registration = () => {
               </select>
               <label htmlFor="gender">Gender:</label>
               <br />
-
-              <input
-                type="radio"
-                value="male"
-                checked={radio === "male"}
-                onChange={(e) => {
-                  setRadio(e.target.value);
-                }}
-                id="male"
-              />
-              <label htmlFor="male">Male</label>
-              <input
-                type="radio"
-                value="female"
-                checked={radio === "female"}
-                onChange={(e) => {
-                  setRadio(e.target.value);
-                }}
-                id="female"
-              />
-              <label htmlFor="female">Female</label>
-              <br />
-
               {radio === "male" && dropdown === "1" && (
                 <div>
                   <label htmlFor="hostel">

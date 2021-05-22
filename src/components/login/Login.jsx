@@ -22,7 +22,7 @@ function Login() {
         email: values.email,
         password: values.password,
       };
-      const response = await fetch("http://localhost:8080/login", {
+      const responseData = await fetch("http://localhost:8080/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +40,7 @@ function Login() {
           draggable: true,
           progress: undefined,
         });
-        throw new Error(responseData);
+        throw new Error(id);
       } else {
         setIsLogin(true);
         auth.login();
