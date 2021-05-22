@@ -27,10 +27,10 @@ button:disabled {
 #dname,
 #mname,
 #address,
-#phone,
-#year,
-#seater,
-#hostels {
+#mobile,
+#email,
+#hostel,
+#year {
   padding: 0px 15px;
   display: block;
   border: none;
@@ -88,9 +88,10 @@ input[type="radio"] {
   #dname,
   #mname,
   #address,
-  #phone,
+  #mobile,
+  #email,
   #year,
-  #seater {
+  #hostel {
     width: 400px;
   }
   #submit {
@@ -108,9 +109,10 @@ input[type="radio"] {
   #dname,
   #mname,
   #address,
-  #phone,
+  #mobile,
+  #email,
   #year,
-  #seater {
+  #hostel {
     width: 300px;
   }
   #submit {

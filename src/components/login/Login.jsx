@@ -29,7 +29,6 @@ function Login() {
         },
         body: JSON.stringify(data),
       });
-
       const responseData = await response.json();
       if (!response.ok) {
         toast.warn(`🎃 invalid credentials entered please try again 🎃`, {
@@ -45,10 +44,31 @@ function Login() {
       } else {
         setIsLogin(true);
         auth.login();
-        history.push("/register");
+        history.push({
+          pathname: "/registration",
+          state: {
+            _id: responseData._id,
+            fname: responseData.fname,
+            lname: responseData.lname,
+            dname: responseData.dname,
+            mname: responseData.mname,
+            mobile: responseData.mobile,
+            email: responseData.email,
+            gender: responseData.gender,
+            address: responseData.address,
+          },
+        });
       }
     } catch (err) {
-      console.log(err);
+      toast.dark(`🎃 Server not running 🎃`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
 
       setError(err.message || "something went wrong");
     }
@@ -111,8 +131,8 @@ function Login() {
             <input
               type="text"
               placeholder="Enter Your Email"
-              id="email"
-              name="email"
+              id="emails"
+              name="emails"
               value={formik.values.email}
               autoComplete="off"
               onChange={formik.handleChange}
