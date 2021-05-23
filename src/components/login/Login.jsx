@@ -131,8 +131,8 @@ function Login() {
             <input
               type="text"
               placeholder="Enter Your Email"
-              id="emails"
-              name="emails"
+              id="email"
+              name="email"
               value={formik.values.email}
               autoComplete="off"
               onChange={formik.handleChange}
