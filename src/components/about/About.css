@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+.about-body {
+  width: 100vw;
+  /* overflow-x: hidden; */
+}
+h2 {
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(109, 14, 14);
+}
+
+hr {
+  background-color: black;
+  color: grey;
+  height: 2px;
+  width: 400px;
+  margin: auto;
+  margin-top: 80px;
+}
+.hostel {
+  text-decoration: underline;
+  text-align: center;
+  margin-top: 60px;
+  font-size: 28px;
+  color: rgb(4, 74, 77);
+}
+.clgdesc {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 16px;
+  font-size: 20px;
+  color: #706565;
+}
+.cards-class {
+  display: flex;
+}
+@media (max-width: 1000px) {
+}
