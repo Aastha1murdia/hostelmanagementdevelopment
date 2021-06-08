@@ -1,12 +1,13 @@
 .card {
   border-radius: 20px;
-  background-color: #ebe2e2;
+  background-color: #ececec;
   color: black;
   /* float: left; */
 }
 h5 {
   text-align: center;
-  background-color: rgb(1, 137, 155);
+  background-color: #3c4d8d;
+  color: white;
   font-weight: bolder;
   font-size: 1.5rem;
   margin-top: 20px;
@@ -19,12 +20,10 @@ h5 {
 .features {
   padding: 15px;
 }
-span {
+/* span {
   font-weight: 620;
-}
-.border-card {
-  border: 1px solid black;
-}
+} */
+
 /* @media (max-width: 730px) {
   .card {
     margin-left: 140px;

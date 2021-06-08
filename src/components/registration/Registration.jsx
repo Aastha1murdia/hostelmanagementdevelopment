@@ -3,6 +3,7 @@ import "./Registration.css";
 import { useFormik } from "formik";
 import { useHistory, useLocation } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
+import Footer from "../footer/Footer";
 import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -118,127 +119,146 @@ const Registration = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="outer_div">
-        <div className="container">
-          <div className="registerform">
-            <h1 className="register">Book Your Room</h1>
-            <form onSubmit={formik.handleSubmit} autoComplete="off">
-              <label htmlFor="fname">
+      <div className="  ">
+        <Navbar />
+        <section className="border-class form-registration my-5 mx-auto col-md-9 ">
+          <div className="register-heading ">Book Your Room</div>
+          <form onSubmit={formik.handleSubmit} autoComplete="off">
+            <div className="form-group form-control-email col-md-12">
+              <div className="labels-registration">
                 First Name:&nbsp;<span className="error">*</span>
-              </label>
-              <div>
-                <input
-                  type="text"
-                  id="fname"
-                  name="fname"
-                  value={formik.values.fname}
-                  placeholder="Enter Your First Name"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  required
-                />
-                {formik.touched.fname && formik.errors.fname ? (
-                  <div className="error">{formik.errors.fname}</div>
-                ) : null}
               </div>
-              <label htmlFor="lname">
+
+              <input
+                type="text"
+                id="fname"
+                name="fname"
+                disabled
+                value={formik.values.fname}
+                className="form-control form-controls-registration"
+                placeholder="Enter Your First Name"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                required
+              />
+              {formik.touched.fname && formik.errors.fname ? (
+                <div className="error">{formik.errors.fname}</div>
+              ) : null}
+            </div>
+            <div className="form-group form-control-email col-md-12">
+              <div className="labels-registration">
                 Last Name:&nbsp;<span className="error">*</span>
-              </label>
-              <div>
-                <input
-                  type="text"
-                  id="lname"
-                  name="lname"
-                  value={formik.values.lname}
-                  placeholder="Enter Your Last Name"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  required
-                />
-                {formik.touched.lname && formik.errors.lname ? (
-                  <div className="error">{formik.errors.lname}</div>
-                ) : null}
               </div>
-              <label htmlFor="dname">
+
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                value={formik.values.lname}
+                disabled
+                className="form-control form-controls-registration"
+                placeholder="Enter Your Last Name"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                required
+              />
+              {formik.touched.lname && formik.errors.lname ? (
+                <div className="error">{formik.errors.lname}</div>
+              ) : null}
+            </div>
+            <div className="form-group form-control-email col-md-12">
+              <div className="labels-registration">
                 Father's Name:&nbsp;<span className="error">*</span>
-              </label>
-              <div>
-                <input
-                  type="text"
-                  id="dname"
-                  name="dname"
-                  value={formik.values.dname}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  placeholder="Enter Your Father's Name"
-                  required
-                />
-                {formik.touched.dname && formik.errors.dname ? (
-                  <div className="error">{formik.errors.dname}</div>
-                ) : null}
               </div>
-              <label htmlFor="mname">
+
+              <input
+                type="text"
+                id="dname"
+                name="dname"
+                value={formik.values.dname}
+                disabled
+                className="form-control form-controls-registration"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder="Enter Your Father's Name"
+                required
+              />
+              {formik.touched.dname && formik.errors.dname ? (
+                <div className="error">{formik.errors.dname}</div>
+              ) : null}
+            </div>
+            <div className="form-group form-control-email col-md-12">
+              <div className="labels-registration">
                 Mother's Name:&nbsp;<span className="error">*</span>
-              </label>
-              <div>
-                <input
-                  type="text"
-                  id="mname"
-                  name="mname"
-                  value={formik.values.mname}
-                  placeholder="Enter Your Mother's Name"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  required
-                />
-                {formik.touched.mname && formik.errors.mname ? (
-                  <div className="error">{formik.errors.mname}</div>
-                ) : null}
               </div>
-              <label htmlFor="mobile">
-                mobile No:&nbsp;<span className="error">*</span>
-              </label>
-              <div>
-                <input
-                  type="text"
-                  id="mobile"
-                  name="mobile"
-                  value={formik.values.mobile}
-                  placeholder="Enter Your mobile Number"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  required
-                />
-                {formik.touched.mobile && formik.errors.mobile ? (
-                  <div className="error">{formik.errors.mobile}</div>
-                ) : null}
+
+              <input
+                type="text"
+                id="mname"
+                name="mname"
+                disabled
+                value={formik.values.mname}
+                className="form-control form-controls-registration"
+                placeholder="Enter Your Mother's Name"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                required
+              />
+              {formik.touched.mname && formik.errors.mname ? (
+                <div className="error">{formik.errors.mname}</div>
+              ) : null}
+            </div>
+            <div className="form-group form-control-email col-md-12">
+              <div className="labels-registration">
+                Mobile No:&nbsp;<span className="error">*</span>
               </div>
-              <label htmlFor="email">
+
+              <input
+                type="text"
+                id="mobile"
+                name="mobile"
+                className="form-control form-controls-registration"
+                value={formik.values.mobile}
+                placeholder="Enter Your mobile Number"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                required
+              />
+              {formik.touched.mobile && formik.errors.mobile ? (
+                <div className="error">{formik.errors.mobile}</div>
+              ) : null}
+            </div>
+            <div className="form-group form-control-email col-md-12">
+              <div className="labels-registration">
                 Email:&nbsp;<span className="error">*</span>
-              </label>
-              <div>
-                <input
-                  type="text"
-                  id="email"
-                  name="email"
-                  value={formik.values.email}
-                  placeholder="Enter Your email "
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  required
-                />
-                {formik.touched.email && formik.errors.email ? (
-                  <div className="error">{formik.errors.email}</div>
-                ) : null}
               </div>
-              <label htmlFor="year">
-                Year:&nbsp;<span className="error">*</span>{" "}
-              </label>
+
+              <input
+                type="text"
+                id="email"
+                name="email"
+                value={formik.values.email}
+                className="form-control form-controls-registration"
+                placeholder="Enter Your email "
+                disabled
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                required
+              />
+              {formik.touched.email && formik.errors.email ? (
+                <div className="error">{formik.errors.email}</div>
+              ) : null}
+            </div>
+            <div className="form-group form-control-email col-md-12">
+              <div className="labels-registration">
+                Year:&nbsp;<span className="error">*</span>
+              </div>
+
               <select
                 name="year"
                 id="year"
                 value={dropdown}
+                className=" custom-select dropdown-year col-md-12 "
                 onChange={(e) => {
                   setDropdown(e.target.value);
                 }}
@@ -250,171 +270,198 @@ const Registration = () => {
                 <option value="3">3</option>
                 <option value="4">4</option>
               </select>
-              <label htmlFor="gender">Gender:</label>
-              <br />
-              {radio === "male" && dropdown === "1" && (
-                <div>
-                  <label htmlFor="hostel">
-                    Hostel:&nbsp;<span className="error">*</span>
-                  </label>
-                  <select
-                    name="hostel"
-                    id="hostel"
-                    value={hostel}
-                    onChange={(e) => {
-                      setHostel(e.target.value);
-                    }}
-                    required
-                  >
-                    <option value={"select"}>--Select One--</option>
-                    <option value="AN Khosla Hostel">AN Khosla Hostel</option>)
-                  </select>
-                </div>
-              )}
+            </div>
+            <div className="col-md-12">
+              <span className="labels-registration">
+                Gender:&nbsp;&nbsp;&nbsp;
+              </span>
 
-              {radio === "male" && dropdown === "2" && (
-                <div>
-                  <label htmlFor="hostel">
-                    Hostel:&nbsp;<span className="error">*</span>
-                  </label>
-                  <select
-                    name="hostel"
-                    id="hostel"
-                    value={hostel}
-                    onChange={(e) => {
-                      setHostel(e.target.value);
-                    }}
-                    required
-                  >
-                    <option value="select">--Select One--</option>
-                    <option value="MV Hostel">MV Hostel</option>
-                  </select>
-                </div>
-              )}
-
-              {radio === "male" && dropdown === "3" && (
-                <div>
-                  <label htmlFor="hostel">
-                    Hostel:&nbsp;<span className="error">*</span>
-                  </label>
-                  <select
-                    name="hostel"
-                    id="hostel"
-                    value={hostel}
-                    onChange={(e) => {
-                      setHostel(e.target.value);
-                    }}
-                    required
-                  >
-                    <option value={"select"}>--Select One--</option>
-                    <option value="NSCB">NSCB</option>
-                  </select>
-                </div>
-              )}
-
-              {radio === "male" && dropdown === "4" && (
-                <div>
-                  <label htmlFor="hostel">
-                    Hostel:&nbsp;<span className="error">*</span>
-                  </label>
-                  <select
-                    name="hostel"
-                    id="hostel"
-                    value={hostel}
-                    onChange={(e) => {
-                      setHostel(e.target.value);
-                    }}
-                    required
-                  >
-                    <option value="select">--Select One--</option>
-                    <option value="PG Hostel">PG Hostel</option>
-                    <option value="GSM Hostel">GSM Hostel</option>
-                  </select>
-                </div>
-              )}
-              {radio === "male" && dropdown === "select" && (
-                <div>
-                  <label htmlFor="hostel">
-                    Hostel:&nbsp;<span className="error">*</span>
-                  </label>
-                  <select
-                    name="hostel"
-                    id="hostel"
-                    value={hostel}
-                    onChange={(e) => {
-                      setHostel(e.target.value);
-                    }}
-                    required
-                  >
-                    <option value="select">--Select One--</option>
-                  </select>
-                </div>
-              )}
-
-              {radio === "female" && (
-                <div>
-                  <label htmlFor="hostel">
-                    Hostel:&nbsp;<span className="error">*</span>
-                  </label>
-                  <select
-                    name="hostel"
-                    id="hostel"
-                    value={hostel}
-                    onChange={(e) => {
-                      setHostel(e.target.value);
-                    }}
-                    required
-                  >
-                    <option value={"select"}>--Select One--</option>
-                    <option value={"CTAE Girls Hostel"}>
-                      CTAE Girls Hostel
-                    </option>
-                  </select>
-                </div>
-              )}
-
-              {radio === "male" && (
-                <div>
-                  <label htmlFor="hostel">
-                    Hostel:&nbsp;<span className="error">*</span>
-                  </label>
-                  <select
-                    name="hostel"
-                    id="hostel"
-                    value={hostel}
-                    onChange={(e) => {
-                      setHostel(e.target.value);
-                    }}
-                    required
-                  >
-                    <option value={"select"}>--Select One--</option>
-                  </select>
-                </div>
-              )}
-
-              <br />
-              <label htmlFor="address">
-                Permanent Address:&nbsp;<span className="error">*</span>
-              </label>
-              <div>
+              <div className="form-check form-check-inline">
                 <input
-                  type="text"
-                  id="address"
-                  name="address"
-                  value={formik.values.address}
-                  placeholder="Enter Your Address"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
+                  type="radio"
+                  value="male"
+                  className="form-check-input"
+                  checked={radio === "male"}
+                  disabled
+                  onChange={(e) => {
+                    setRadio(e.target.value);
+                  }}
+                  id="male"
                 />
+                <label htmlFor="male" className="form-check-label labels">
+                  Male
+                </label>
               </div>
+
+              <div className="form-check form-check-inline">
+                <input
+                  type="radio"
+                  value="female"
+                  className="form-check-input"
+                  checked={radio === "female"}
+                  disabled
+                  onChange={(e) => {
+                    setRadio(e.target.value);
+                  }}
+                  id="female"
+                />
+                <label htmlFor="female" className="form-check-label labels">
+                  Female
+                </label>
+              </div>
+            </div>
+            {radio === "male" && dropdown === "1" && (
+              <div className="col-md-12">
+                <div className="labels-registration">
+                  Hostel:&nbsp;<span className="error">*</span>
+                </div>
+                <select
+                  name="hostel"
+                  id="hostel"
+                  value={hostel}
+                  className=" custom-select dropdown-year col-md-12 "
+                  onChange={(e) => {
+                    setHostel(e.target.value);
+                  }}
+                  required
+                >
+                  <option value={"select"}>--Select One--</option>
+                  <option value="AN Khosla Hostel">AN Khosla Hostel</option>)
+                </select>
+              </div>
+            )}
+
+            {radio === "male" && dropdown === "2" && (
+              <div className="col-md-12">
+                <div className="labels-registration">
+                  Hostel:&nbsp;<span className="error">*</span>
+                </div>
+                <select
+                  name="hostel"
+                  id="hostel"
+                  className=" custom-select dropdown-year col-md-12 "
+                  value={hostel}
+                  onChange={(e) => {
+                    setHostel(e.target.value);
+                  }}
+                  required
+                >
+                  <option value="select">--Select One--</option>
+                  <option value="MV Hostel">MV Hostel</option>
+                </select>
+              </div>
+            )}
+
+            {radio === "male" && dropdown === "3" && (
+              <div className="col-md-12">
+                <div className="labels-registration">
+                  Hostel:&nbsp;<span className="error">*</span>
+                </div>
+                <select
+                  name="hostel"
+                  id="hostel"
+                  value={hostel}
+                  className=" custom-select dropdown-year col-md-12 "
+                  onChange={(e) => {
+                    setHostel(e.target.value);
+                  }}
+                  required
+                >
+                  <option value={"select"}>--Select One--</option>
+                  <option value="NSCB">NSCB</option>
+                </select>
+              </div>
+            )}
+
+            {radio === "male" && dropdown === "4" && (
+              <div className="col-md-12">
+                <div className="labels-registration">
+                  Hostel:&nbsp;<span className="error">*</span>
+                </div>
+                <select
+                  name="hostel"
+                  id="hostel"
+                  value={hostel}
+                  className=" custom-select dropdown-year col-md-12 "
+                  onChange={(e) => {
+                    setHostel(e.target.value);
+                  }}
+                  required
+                >
+                  <option value="select">--Select One--</option>
+                  <option value="PG Hostel">PG Hostel</option>
+                  <option value="GSM Hostel">GSM Hostel</option>
+                </select>
+              </div>
+            )}
+            {radio === "male" && dropdown === "select" && (
+              <div className="col-md-12">
+                <div className="labels-registration">
+                  Hostel:&nbsp;<span className="error">*</span>
+                </div>
+                <select
+                  name="hostel"
+                  id="hostel"
+                  value={hostel}
+                  className=" custom-select dropdown-year col-md-12 "
+                  onChange={(e) => {
+                    setHostel(e.target.value);
+                  }}
+                  required
+                >
+                  <option value="select">--Select One--</option>
+                </select>
+              </div>
+            )}
+
+            {radio === "female" && (
+              <div className="col-md-12">
+                <div className="labels-registration">
+                  Hostel:&nbsp;<span className="error">*</span>
+                </div>
+                <select
+                  name="hostel"
+                  id="hostel"
+                  className=" custom-select dropdown-year col-md-12 "
+                  value={hostel}
+                  onChange={(e) => {
+                    setHostel(e.target.value);
+                  }}
+                  required
+                >
+                  <option value={"select"}>--Select One--</option>
+                  <option value={"CTAE Girls Hostel"}>CTAE Girls Hostel</option>
+                </select>
+              </div>
+            )}
+
+            <br />
+            <div className="form-group form-control-email col-md-12">
+              <div className="labels-registration">
+                Permanent Address:&nbsp;<span className="error">*</span>
+              </div>
+
+              <input
+                type="text"
+                id="address"
+                name="address"
+                value={formik.values.address}
+                placeholder="Enter Your Address"
+                className="form-control form-controls-registration"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+            </div>
+            <div className="col-md-12">
               <button type="submit" className="submit btn btn-lg btn-block">
                 Register
               </button>
-            </form>
-          </div>
-        </div>
+            </div>
+          </form>
+        </section>
+        <ToastContainer style={{ width: "550px" }} />
       </div>
-      <ToastContainer style={{ width: "550px" }} />
+      <Footer />
     </>
   );
 };

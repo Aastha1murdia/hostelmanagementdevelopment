@@ -1,13 +1,10 @@
-* {
+/* * {
   box-sizing: border-box;
 }
 .outer_div {
   height: 1100px;
 }
-.error {
-  color: tomato;
-  font-size: smaller;
-}
+
 button:disabled {
   opacity: 0.65;
   cursor: not-allowed;
@@ -119,4 +116,32 @@ input[type="radio"] {
     margin-left: 100px;
     margin-top: 20px;
   }
+} */
+.error {
+  color: tomato;
+  font-size: 1.2rem;
+}
+
+.register-heading {
+  font-size: 3.5vw;
+  color: #3c4d8d;
+  font-family: "Rubik", sans-serif;
+  margin-left: 23vw;
+  padding: 15px 0px;
+}
+
+select {
+  padding: 10px 0px;
+}
+.form-controls-registration {
+  height: 45px;
+}
+.labels-registration {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.form-registration {
+  background-color: #eeeeee;
 }

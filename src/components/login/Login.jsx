@@ -7,6 +7,7 @@ import Navbar from "../navbar/Navbar";
 import { AuthContext } from "../../auth-content";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "../footer/Footer";
 
 function Login() {
   const auth = useContext(AuthContext);
@@ -31,7 +32,7 @@ function Login() {
       });
       const responseData = await response.json();
       if (!response.ok) {
-        toast.warn(`🎃 invalid credentials entered please try again 🎃`, {
+        toast.error(`🎃 invalid credentials entered 🎃`, {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -40,10 +41,15 @@ function Login() {
           draggable: true,
           progress: undefined,
         });
-        throw new Error();
       } else {
         setIsLogin(true);
         auth.login();
+        const data = {
+          email: values.email,
+          password: values.password,
+          image: responseData.image,
+        };
+        localStorage.setItem("login", JSON.stringify(data));
         history.push({
           pathname: "/registration",
           state: {
@@ -60,7 +66,7 @@ function Login() {
         });
       }
     } catch (err) {
-      toast.dark(`🎃 Server not running 🎃`, {
+      toast.warn(`🎃 Server not running 🎃`, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -69,7 +75,6 @@ function Login() {
         draggable: true,
         progress: undefined,
       });
-
       setError(err.message || "something went wrong");
     }
   };
@@ -112,68 +117,73 @@ function Login() {
     },
     validate,
     onSubmit(values) {
-      const data = { email: values.email, password: values.password };
-      localStorage.setItem("login", JSON.stringify(data));
       saveLogin(values);
     },
   });
 
   return (
-    <div>
-      <Navbar isLogin={isLogin} />
-      <div className="login">
-        <form onSubmit={formik.handleSubmit} autoComplete="off">
-          <label htmlFor="email" className="userlbl text-left">
-            Username&nbsp;<span className="error">*</span>
-          </label>
+    <>
+      <div className="  main-login-page">
+        <Navbar isLogin={isLogin} />
+        <section className="login-form-section border-class  mx-auto col-md-4 ">
+          <div className="login-heading ">User Login</div>
+          <form onSubmit={formik.handleSubmit} autoComplete="off">
+            <div className="form-group form-control-email col-md-12">
+              <div className="labels">
+                Email&nbsp;<span className="error">*</span>
+              </div>
+              <input
+                type="text"
+                placeholder="Enter Your Email"
+                className="form-control form-controls form-control-lg"
+                id="emails"
+                name="email"
+                value={formik.values.email}
+                autoComplete="off"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.email && formik.errors.email ? (
+                <div className="error">{formik.errors.email}</div>
+              ) : null}
+            </div>
 
-          <div>
-            <input
-              type="text"
-              placeholder="Enter Your Email"
-              id="email"
-              name="email"
-              value={formik.values.email}
-              autoComplete="off"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            {formik.touched.email && formik.errors.email ? (
-              <div className="error">{formik.errors.email}</div>
-            ) : null}
-          </div>
-          <label htmlFor="pswd" className="pswdlbl">
-            Password&nbsp;<span className="error">*</span>
-          </label>
-          <div>
-            <input
-              type="password"
-              placeholder="Enter Your Password"
-              id="password"
-              name="password"
-              value={formik.values.password}
-              autoComplete="off"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            {formik.touched.password && formik.errors.password ? (
-              <div className="error">{formik.errors.password}</div>
-            ) : null}
-          </div>
-          {/* <NavLink to="/registration" className="text-decoration-none"> */}
-          <button
-            type="submit"
-            value="Log In"
-            disabled={disable}
-            className="submit btn btn-lg btn-block"
-          >
-            Login
-          </button>
-          {/* </NavLink> */}
-        </form>
+            <div className="form-group form-control-email col-md-12">
+              <div className="labels">
+                Password&nbsp;<span className="error">*</span>
+              </div>
+              <input
+                type="password"
+                placeholder="Enter Your Password"
+                className="form-control form-controls form-control-lg"
+                id="password"
+                name="password"
+                value={formik.values.password}
+                autoComplete="off"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.password && formik.errors.password ? (
+                <div className="error">{formik.errors.password}</div>
+              ) : null}
+            </div>
+            <div className="col-md-12">
+              <button
+                type="submit"
+                value="LOG IN"
+                disabled={disable}
+                className="submit btn btn-lg btn-block "
+              >
+                Login
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <ToastContainer />
       </div>
-      <ToastContainer style={{ width: "450px" }} />
-    </div>
+      <Footer />
+    </>
   );
 }
 

@@ -1,4 +1,5 @@
-input[type="text"],
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400&display=swap");
+/* input[type="text"],
 [type="password"] {
   width: 23.5vw;
   border-radius: 2px;
@@ -10,10 +11,14 @@ input[type="text"],
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-}
-button a {
+} */
+/* button a {
   text-decoration: none;
   color: white;
+} */
+
+/* .login-form {
+  padding: 50px 50px;
 }
 .span-login {
   color: white;
@@ -36,17 +41,7 @@ button a {
   margin-right: auto;
   margin-top: 23vh;
 }
-.submit {
-  margin-top: 30px;
-  background-color: rgb(241, 121, 9);
-  border-radius: 5px;
-  border: none;
-  color: White;
-}
-.submit:hover {
-  background-color: rgb(226, 114, 8);
-  color: White;
-}
+
 .userlbl,
 .pswdlbl {
   margin-top: 10px;
@@ -55,32 +50,45 @@ button a {
 input[type="text"],
 [type="password"]:focus {
   outline: none;
+} */
+
+.login-heading {
+  font-size: 3.5vw;
+  color: #3c4d8d;
+  font-family: "Rubik", sans-serif;
+  margin-left: 6.9vw;
+  padding: 30px 0px;
+}
+
+.main-login-page {
+  min-height: 750px;
+}
+.login-body {
+  margin-top: 180px;
+}
+.submit {
+  margin-top: 38px;
+  margin-bottom: 38px;
+  background-color: #3c4d8d;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  height: 53px;
+  border: none;
+  color: White;
+}
+.submit:hover {
+  background-color: #2c3969;
+  color: White;
 }
 button:disabled {
   opacity: 0.65;
   cursor: not-allowed;
 }
-
-@media (max-width:11640px){
-  input[type="text"],[type="password"]{
-    width:370px;
-  }
+.login-form-section {
+  margin-top: 50px;
+  background-color: #eeeeee;
 }
-
-@media (max-width:980px){
-  input[type="text"],[type="password"]{
-    width:370px;
-  }
-}
-
-@media (max-width:740px){
-  input[type="text"],[type="password"]{
-    width:360px;
-  }
-}
-
-@media (max-width:500px){
-  input[type="text"],[type="password"]{
-    width:350px;
-  }
+.labels {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
 }
