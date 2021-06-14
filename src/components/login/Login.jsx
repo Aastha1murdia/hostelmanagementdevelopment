@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./Login.css";
-import zxcvbn from "zxcvbn";
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import { AuthContext } from "../../auth-content";
 import { ToastContainer, toast } from "react-toastify";
+import LoginImg from "../../login.svg";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "../footer/Footer";
 
@@ -80,8 +80,6 @@ function Login() {
   };
 
   const validate = (values) => {
-    const password = values.password;
-    const evaluation = zxcvbn(password);
     let errors = {};
 
     if (values.email.length === 0) {
@@ -97,10 +95,6 @@ function Login() {
       errors.password = " ";
     } else if (values.password.length > 0 && values.password.length < 6) {
       errors.password = `password must be at least of 6 characters`;
-    } else if (evaluation.score < 2) {
-      errors.password = `${
-        evaluation.feedback.suggestions[1] || evaluation.feedback.suggestions[0]
-      }`;
     }
     if (errors.email || errors.password) {
       setDisable(true);
@@ -123,62 +117,71 @@ function Login() {
 
   return (
     <>
-      <div className="  main-login-page">
-        <Navbar isLogin={isLogin} />
-        <section className="login-form-section border-class  mx-auto col-md-4 ">
-          <div className="login-heading ">User Login</div>
-          <form onSubmit={formik.handleSubmit} autoComplete="off">
-            <div className="form-group form-control-email col-md-12">
-              <div className="labels">
-                Email&nbsp;<span className="error">*</span>
-              </div>
-              <input
-                type="text"
-                placeholder="Enter Your Email"
-                className="form-control form-controls form-control-lg"
-                id="emails"
-                name="email"
-                value={formik.values.email}
-                autoComplete="off"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-              />
-              {formik.touched.email && formik.errors.email ? (
-                <div className="error">{formik.errors.email}</div>
-              ) : null}
-            </div>
+      <Navbar isLogin={isLogin} />
 
-            <div className="form-group form-control-email col-md-12">
-              <div className="labels">
-                Password&nbsp;<span className="error">*</span>
+      <div className=" main-login-page">
+        <div className="container-fluid mt-4">
+          <div className="img-div-email col-md-4">
+            <div className="col-md-12 text-left">
+              <img className="hero-login-form" src={LoginImg} alt=" " />
+            </div>
+          </div>
+
+          <section className="login-form-section border-class  col-md-4">
+            <div className="login-heading ">User Login</div>
+            <form onSubmit={formik.handleSubmit} autoComplete="off">
+              <div className="form-group form-control-email col-md-12">
+                <div className="labels">
+                  Email&nbsp;<span className="error">*</span>
+                </div>
+                <input
+                  type="text"
+                  placeholder="Enter Your Email"
+                  className="form-control form-controls form-control-lg"
+                  id="emails"
+                  name="email"
+                  value={formik.values.email}
+                  autoComplete="off"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                {formik.touched.email && formik.errors.email ? (
+                  <div className="error">{formik.errors.email}</div>
+                ) : null}
               </div>
-              <input
-                type="password"
-                placeholder="Enter Your Password"
-                className="form-control form-controls form-control-lg"
-                id="password"
-                name="password"
-                value={formik.values.password}
-                autoComplete="off"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-              />
-              {formik.touched.password && formik.errors.password ? (
-                <div className="error">{formik.errors.password}</div>
-              ) : null}
-            </div>
-            <div className="col-md-12">
-              <button
-                type="submit"
-                value="LOG IN"
-                disabled={disable}
-                className="submit btn btn-lg btn-block "
-              >
-                Login
-              </button>
-            </div>
-          </form>
-        </section>
+
+              <div className="form-group form-control-email col-md-12">
+                <div className="labels">
+                  Password&nbsp;<span className="error">*</span>
+                </div>
+                <input
+                  type="password"
+                  placeholder="Enter Your Password"
+                  className="form-control form-controls form-control-lg"
+                  id="password"
+                  name="password"
+                  value={formik.values.password}
+                  autoComplete="off"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                {formik.touched.password && formik.errors.password ? (
+                  <div className="error">{formik.errors.password}</div>
+                ) : null}
+              </div>
+              <div className="col-md-12">
+                <button
+                  type="submit"
+                  value="LOG IN"
+                  disabled={disable}
+                  className="submit btn btn-lg btn-block "
+                >
+                  Login
+                </button>
+              </div>
+            </form>
+          </section>
+        </div>
 
         <ToastContainer />
       </div>

@@ -1,56 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400&display=swap");
-/* input[type="text"],
-[type="password"] {
-  width: 23.5vw;
-  border-radius: 2px;
-  background-color: #ebe6e6;
-  height: 30px;
-  display: block;
-  padding: 12px 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-} */
-/* button a {
-  text-decoration: none;
-  color: white;
-} */
-
-/* .login-form {
-  padding: 50px 50px;
-}
-.span-login {
-  color: white;
-  transition: transform 0.2s;
-}
-.span-login:hover {
-  color: white;
-  transform: scale(1.5);
-}
-.error {
-  color: tomato;
-  font-size: smaller;
-}
-.login {
-  border-radius: 5px;
-  background-color: white;
-  width: 400px;
-  padding: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 23vh;
-}
-
-.userlbl,
-.pswdlbl {
-  margin-top: 10px;
-}
-
-input[type="text"],
-[type="password"]:focus {
-  outline: none;
-} */
 
 .login-heading {
   font-size: 3.5vw;
@@ -91,4 +39,18 @@ button:disabled {
 .labels {
   font-size: 1.6rem;
   margin-bottom: 10px;
+}
+
+.img-div-email {
+  float: left;
+}
+
+section {
+  float: right;
+  margin-right: 10vw;
+}
+.hero-login-form {
+  height: 25vw;
+  width: 40vw;
+  margin-top: 7vw;
 }

@@ -6,8 +6,8 @@ import Card from "../card/Card";
 function About() {
   return (
     <>
+      <Navbar />
       <div className="about-body ">
-        <Navbar />
         <h2 className="mt-3">College Of Technology And Engineering</h2>
         <p className="clgdesc">
           The College of Technology and Engineering (CTAE), is a public

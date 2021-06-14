@@ -11,7 +11,7 @@ function Home() {
 
       <div
         id="carouselExampleIndicators"
-        className="carousel slide"
+        className="carousel slide mb-1"
         data-ride="carousel"
       >
         <ol className="carousel-indicators">

@@ -24,12 +24,14 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="col-md-12 bg-darks">
+      <div className="col-md-12 bg-darks navbar-body">
         <nav className="navbar navbar-expand-lg col-md-12 mx-auto navbar-light bg-darks">
           <img
             src="https://www.ctae.ac.in/assets/images/logo-mpuat.png"
             alt=""
             className=""
+            height="90"
+            width="280"
           />
           <button
             className="navbar-toggler "
