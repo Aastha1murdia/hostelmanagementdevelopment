@@ -82,6 +82,15 @@ const Navbar = () => {
                 <NavLink
                   className="links-nav text-decoration-none"
                   activeClassName="active-classs"
+                  to="/team"
+                >
+                  <span>TEAM</span>
+                </NavLink>
+              </li>
+              <li className="nav-item ">
+                <NavLink
+                  className="links-nav text-decoration-none"
+                  activeClassName="active-classs"
                   to="/contact"
                 >
                   <span>CONTACT US</span>

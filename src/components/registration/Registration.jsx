@@ -3,8 +3,8 @@ import "./Registration.css";
 import { useFormik } from "formik";
 import { useHistory, useLocation } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
-import Navbar from "../navbar/Navbar";
-import Footer from "../footer/Footer";
+  import Navbar from "../navbar/Navbar";
+  import Footer from "../footer/Footer";
 import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -26,6 +26,7 @@ const Registration = () => {
     formik.values.mobile = location.state.mobile;
     formik.values.address = location.state.address;
     setRadio(location.state.gender);
+    setDropdown(location.state.year);
   }, []);
 
   const validate = (values) => {
@@ -280,7 +281,7 @@ const Registration = () => {
             </div>
             <div className="form-group form-control-email col-md-12">
               <div className="labels-registration">
-                Year:&nbsp;<span className="error">*</span>
+                Semester:&nbsp;<span className="error">*</span>
               </div>
 
               <select
@@ -295,9 +296,9 @@ const Registration = () => {
               >
                 <option value="select">--Select One--</option>
                 <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
+                <option value="2">3</option>
+                <option value="3">5</option>
+                <option value="4">7</option>
               </select>
             </div>
             <div className="col-md-12">
@@ -479,6 +480,8 @@ const Registration = () => {
                 className="form-control form-controls-registration"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                
+
               />
             </div>
             <div className="col-md-12">

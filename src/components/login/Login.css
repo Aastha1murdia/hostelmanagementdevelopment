@@ -45,7 +45,7 @@ button:disabled {
   float: left;
 }
 
-section {
+.login-form-section {
   float: right;
   margin-right: 10vw;
 }

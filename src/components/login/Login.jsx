@@ -61,6 +61,7 @@ function Login() {
             mobile: responseData.mobile,
             email: responseData.email,
             gender: responseData.gender,
+            year:responseData.year,
             address: responseData.address,
           },
         });

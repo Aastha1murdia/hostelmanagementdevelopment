@@ -9,6 +9,7 @@ import Login from "../login/Login";
 import Registration from "../registration/Registration";
 import StripePaymentCancel from "../payment/StripePaymentCancel";
 import StripePaymentSuccess from "../payment/StripePaymentSuccess";
+import Team from "../team/Team";
 import Error from "../error-404/Error";
 import { AuthContext } from "../../auth-content";
 
@@ -60,6 +61,9 @@ function App() {
             </Route>
             <Route path="/success" exact>
               <StripePaymentSuccess />
+            </Route>
+            <Route path="/team" exact>
+              <Team />
             </Route>
             <Route component={Error} />
           </Switch>
