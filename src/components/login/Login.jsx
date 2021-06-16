@@ -13,12 +13,12 @@ function Login() {
   const auth = useContext(AuthContext);
   const history = useHistory();
   const [disable, setDisable] = useState(true);
-  const [isLogin, setIsLogin] = useState(false);
-
-  const [error, setError] = useState();
+  const [isLoading, setLoading] = useState(false);
 
   const saveLogin = async (values) => {
     try {
+      setLoading(true);
+      setDisable(true);
       const data = {
         email: values.email,
         password: values.password,
@@ -31,6 +31,8 @@ function Login() {
         body: JSON.stringify(data),
       });
       const responseData = await response.json();
+      setLoading(false);
+      setDisable(false);
       if (!response.ok) {
         toast.error(`🎃 invalid credentials entered 🎃`, {
           position: "top-center",
@@ -42,8 +44,8 @@ function Login() {
           progress: undefined,
         });
       } else {
-        setIsLogin(true);
         auth.login();
+       
         const data = {
           email: values.email,
           password: values.password,
@@ -76,7 +78,6 @@ function Login() {
         draggable: true,
         progress: undefined,
       });
-      setError(err.message || "something went wrong");
     }
   };
 
@@ -118,7 +119,7 @@ function Login() {
 
   return (
     <>
-      <Navbar isLogin={isLogin} />
+      <Navbar />
 
       <div className=" main-login-page">
         <div className="container-fluid mt-4">
@@ -128,7 +129,7 @@ function Login() {
             </div>
           </div>
 
-          <section className="login-form-section border-class  col-md-4">
+          <section className="login-form-section border-class col-md-4">
             <div className="login-heading ">User Login</div>
             <form onSubmit={formik.handleSubmit} autoComplete="off">
               <div className="form-group form-control-email col-md-12">
@@ -171,6 +172,7 @@ function Login() {
                 ) : null}
               </div>
               <div className="col-md-12">
+                {!isLoading &&   (
                 <button
                   type="submit"
                   value="LOG IN"
@@ -179,6 +181,17 @@ function Login() {
                 >
                   Login
                 </button>
+                )}
+                {isLoading &&   (
+                <button
+                  type="submit"
+                  value="LOG IN"
+                  disabled={disable}
+                  className="submit btn btn-lg btn-block "
+                >
+                  Login... &nbsp;
+                  <i className="fas fa-spinner fa-spin"></i>
+                </button>)}
               </div>
             </form>
           </section>

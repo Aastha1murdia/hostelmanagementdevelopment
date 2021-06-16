@@ -14,8 +14,10 @@ const Registration = () => {
   const [radio, setRadio] = useState("male");
   const [dropdown, setDropdown] = useState("select");
   const [hostel, setHostel] = useState("select");
+  const [isDisable, setDisable] = useState(false);
   const location = useLocation();
   const history = useHistory();
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     formik.values.fname = location.state.fname;
@@ -95,6 +97,9 @@ const Registration = () => {
         year: dropdown,
         hostel: hostel,
       };
+      try{
+        setLoading(true);
+        setDisable(true);
       const res = await fetch(`http://localhost:8080/registration`, {
         method: "POST",
         headers: {
@@ -102,6 +107,8 @@ const Registration = () => {
         },
         body: JSON.stringify(data),
       });
+      
+
       if (res.status == 422) {
         toast.dark(
           `🎃 Email and phone already registered, try different credentials ... 🎃`,
@@ -116,9 +123,11 @@ const Registration = () => {
           }
         );
       } else {
+        const stripePromise = loadStripe(
+          "pk_test_51J0jwKSAHkJBUNRnwi8hWgJccfofPVoDZhjSFTRQixsCVpYrBOXxNnIpafertxqwuwK2iMFr5iAKI67qO9JuLyKQ00YaLdLMaj"
+        );
         const stripe = await stripePromise;
 
-        // Call your backend to create the Checkout Session
         const response = await fetch(
           "http://localhost:8080/create-checkout-session",
           {
@@ -131,19 +140,19 @@ const Registration = () => {
 
         const session = await response.json();
 
-        // When the customer clicks on the button, redirect them to Checkout.
         const result = await stripe.redirectToCheckout({
           sessionId: session.id,
         });
 
         if (result.error) {
-          // If `redirectToCheckout` fails due to a browser or network
-          // error, display the localized error message to your customer
-          // using `result.error.message`.
-          // console.log("error occured while doing payment");
-          // history.pushState('/');
+          
         }
       }
+      setLoading(false);
+      setDisable(false);
+    }catch(error){
+      console.log(error);
+    }
     },
   });
 
@@ -270,9 +279,9 @@ const Registration = () => {
                 value={formik.values.email}
                 className="form-control form-controls-registration"
                 placeholder="Enter Your email "
-                disabled
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                disabled
                 required
               />
               {formik.touched.email && formik.errors.email ? (
@@ -485,9 +494,17 @@ const Registration = () => {
               />
             </div>
             <div className="col-md-12">
-              <button type="submit" className="submit btn btn-lg btn-block">
+            {!isLoading &&   (
+                <button type="submit" className="submit btn btn-lg btn-block">
                 Continue to Pay
               </button>
+                )}
+                {isLoading &&   (
+                <button type="submit" disabled={isDisable} className="submit btn btn-lg btn-block">
+                Continue to Pay... &nbsp;
+                  <i className="fas fa-spinner fa-spin"></i>
+                </button>)}
+              
             </div>
           </form>
         </section>

@@ -59,7 +59,7 @@ function App() {
             <Route path="/cancel" exact>
               <StripePaymentCancel />
             </Route>
-            <Route path="/success" exact>
+            <Route path="/stripepaymentsuccess" exact>
               <StripePaymentSuccess />
             </Route>
             <Route path="/team" exact>
