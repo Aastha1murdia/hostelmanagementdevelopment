@@ -45,7 +45,7 @@ function Login() {
         });
       } else {
         auth.login();
-       
+
         const data = {
           email: values.email,
           password: values.password,
@@ -63,7 +63,7 @@ function Login() {
             mobile: responseData.mobile,
             email: responseData.email,
             gender: responseData.gender,
-            year:responseData.year,
+            year: responseData.year,
             address: responseData.address,
           },
         });
@@ -78,6 +78,8 @@ function Login() {
         draggable: true,
         progress: undefined,
       });
+      setLoading(false);
+      setDisable(false);
     }
   };
 
@@ -172,26 +174,27 @@ function Login() {
                 ) : null}
               </div>
               <div className="col-md-12">
-                {!isLoading &&   (
-                <button
-                  type="submit"
-                  value="LOG IN"
-                  disabled={disable}
-                  className="submit btn btn-lg btn-block "
-                >
-                  Login
-                </button>
+                {!isLoading && (
+                  <button
+                    type="submit"
+                    value="LOG IN"
+                    disabled={disable}
+                    className="submit btn btn-lg btn-block "
+                  >
+                    Login
+                  </button>
                 )}
-                {isLoading &&   (
-                <button
-                  type="submit"
-                  value="LOG IN"
-                  disabled={disable}
-                  className="submit btn btn-lg btn-block "
-                >
-                  Login... &nbsp;
-                  <i className="fas fa-spinner fa-spin"></i>
-                </button>)}
+                {isLoading && (
+                  <button
+                    type="submit"
+                    value="LOG IN"
+                    disabled={disable}
+                    className="submit btn btn-lg btn-block "
+                  >
+                    Login... &nbsp;
+                    <i className="fas fa-spinner fa-spin"></i>
+                  </button>
+                )}
               </div>
             </form>
           </section>

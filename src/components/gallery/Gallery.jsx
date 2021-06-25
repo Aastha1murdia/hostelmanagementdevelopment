@@ -107,7 +107,7 @@ function MyGallery() {
           </Gallery>
         </div>
         <h6> CTAE Girl's hostel</h6>
-        <div className="photo">
+        <div className="photo mb-4">
           <Gallery>
             <Photo
               smallpic="./images/img25.png"

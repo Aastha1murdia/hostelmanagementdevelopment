@@ -3,8 +3,8 @@ import "./Registration.css";
 import { useFormik } from "formik";
 import { useHistory, useLocation } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
-  import Navbar from "../navbar/Navbar";
-  import Footer from "../footer/Footer";
+import Navbar from "../navbar/Navbar";
+import Footer from "../footer/Footer";
 import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -97,62 +97,70 @@ const Registration = () => {
         year: dropdown,
         hostel: hostel,
       };
-      try{
+      try {
         setLoading(true);
         setDisable(true);
-      const res = await fetch(`http://localhost:8080/registration`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      
-
-      if (res.status == 422) {
-        toast.dark(
-          `🎃 Email and phone already registered, try different credentials ... 🎃`,
-          {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          }
-        );
-      } else {
-        const stripePromise = loadStripe(
-          "pk_test_51J0jwKSAHkJBUNRnwi8hWgJccfofPVoDZhjSFTRQixsCVpYrBOXxNnIpafertxqwuwK2iMFr5iAKI67qO9JuLyKQ00YaLdLMaj"
-        );
-        const stripe = await stripePromise;
-
-        const response = await fetch(
-          "http://localhost:8080/create-checkout-session",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        const session = await response.json();
-
-        const result = await stripe.redirectToCheckout({
-          sessionId: session.id,
+        const res = await fetch(`http://localhost:8080/registration`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
         });
 
-        if (result.error) {
-          
+        if (res.status == 422) {
+          toast.dark(
+            `🎃 Email and phone already registered, try different credentials ... 🎃`,
+            {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            }
+          );
+        } else {
+          const stripePromise = loadStripe(
+            "pk_test_51J0jwKSAHkJBUNRnwi8hWgJccfofPVoDZhjSFTRQixsCVpYrBOXxNnIpafertxqwuwK2iMFr5iAKI67qO9JuLyKQ00YaLdLMaj"
+          );
+          const stripe = await stripePromise;
+
+          const response = await fetch(
+            "http://localhost:8080/create-checkout-session",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+
+          const session = await response.json();
+
+          const result = await stripe.redirectToCheckout({
+            sessionId: session.id,
+          });
+
+          if (result.error) {
+          }
         }
+        setLoading(false);
+        setDisable(false);
+      } catch (error) {
+        console.log(error);
+        toast.warn(`🎃 Server not running 🎃`, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        setLoading(false);
       }
-      setLoading(false);
-      setDisable(false);
-    }catch(error){
-      console.log(error);
-    }
     },
   });
 
@@ -281,7 +289,7 @@ const Registration = () => {
                 placeholder="Enter Your email "
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                disabled
+                // disabled
                 required
               />
               {formik.touched.email && formik.errors.email ? (
@@ -489,22 +497,24 @@ const Registration = () => {
                 className="form-control form-controls-registration"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                
-
               />
             </div>
             <div className="col-md-12">
-            {!isLoading &&   (
+              {!isLoading && (
                 <button type="submit" className="submit btn btn-lg btn-block">
-                Continue to Pay
-              </button>
-                )}
-                {isLoading &&   (
-                <button type="submit" disabled={isDisable} className="submit btn btn-lg btn-block">
-                Continue to Pay... &nbsp;
+                  Continue to Pay
+                </button>
+              )}
+              {isLoading && (
+                <button
+                  type="submit"
+                  disabled={isDisable}
+                  className="submit btn btn-lg btn-block"
+                >
+                  Continue to Pay... &nbsp;
                   <i className="fas fa-spinner fa-spin"></i>
-                </button>)}
-              
+                </button>
+              )}
             </div>
           </form>
         </section>
