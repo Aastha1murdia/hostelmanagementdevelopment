@@ -29,12 +29,14 @@ const StripePaymentSuccess = () => {
   return (
     <>
         <Navbar />
-
+        <div>
         <div className="main-content-success-payment">
           <div className="container-fluid col-md-12">
-            <div className="pt-0 text-center">
-              <img src={Success} alt="" className="img-success-pay" />
-              <div id="pdf-view" style={{textAlign:"center",marginRight:"100px",marginTop:"70px"}} >
+          <img src={Success} alt="" className="img-success-pay text-cecnter" />
+            <div  id="pdf-view" className="pt-0  text-center">
+            
+              
+              
               <div className=" success-verified-header mt-0">
                 Payment Successful
               </div>
@@ -71,13 +73,14 @@ const StripePaymentSuccess = () => {
             </div>
           </div>
         </div>
+        
         <div className="previous mt-5">
           <button className="btn py-2 px-3 linktomenu" onClick={pdfDownload}>
             Download as pdf
           </button>
         </div>
         <Footer />
-      </div>
+        </div>
     </>
   );
 };
