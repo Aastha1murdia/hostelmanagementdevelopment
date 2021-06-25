@@ -6,18 +6,20 @@ import Success from "../../success-pay.svg";
 import "./Payment.css";
 import { jsPDF } from "jspdf";
 
-const StripePaymentSuccess = () => {
-  const history = useHistory();
 
-  const pdfDownload = () => {
-    // e.preventDefault();
-    const doc = new jsPDF("landscape", "pt", "A4");
-    doc.html(document.getElementById("pdf-view"), {
+const StripePaymentSuccess = () => {
+  const history=useHistory();
+  
+  const pdfDownload = e => {
+    e.preventDefault()
+    let doc = new jsPDF("landscape", 'pt', 'A4');
+    doc.html(document.getElementById('pdf-view'), {
       callback: () => {
-        doc.save("test.pdf");
-      },
+        doc.save('test.pdf');
+      }
     });
-  };
+  }
+  
   const Random = (props) => {
     var max = 10000000000000000;
     var randomno = Math.random() * max + 1;
@@ -26,14 +28,13 @@ const StripePaymentSuccess = () => {
 
   return (
     <>
-      <div className="success-verified-body">
         <Navbar />
 
         <div className="main-content-success-payment">
           <div className="container-fluid col-md-12">
             <div className="pt-0 text-center">
               <img src={Success} alt="" className="img-success-pay" />
-
+              <div id="pdf-view" style={{textAlign:"center",marginRight:"100px",marginTop:"70px"}} >
               <div className=" success-verified-header mt-0">
                 Payment Successful
               </div>
