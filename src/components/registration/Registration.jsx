@@ -7,6 +7,7 @@ import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import ReCAPTCHA from "react-google-recaptcha";
 import "react-toastify/dist/ReactToastify.css";
 const stripePromise = loadStripe("pk_test");
 
@@ -16,7 +17,7 @@ const Registration = () => {
   const [hostel, setHostel] = useState("select");
   const [isDisable, setDisable] = useState(false);
   const location = useLocation();
-  const history = useHistory();
+  const [isVerified,setVerified]=useState(false);
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -30,6 +31,10 @@ const Registration = () => {
     setRadio(location.state.gender);
     setDropdown(location.state.year);
   }, []);
+
+  const handleRecaptcha=async(e)=>{
+      setVerified(true);
+  }
 
   const validate = (values) => {
     let errors = {};
@@ -166,7 +171,7 @@ const Registration = () => {
 
   return (
     <>
-      <div className="  ">
+      <div >
         <Navbar />
         <section className="border-class form-registration my-5 mx-auto col-md-9 ">
           <div className="register-heading ">Book Your Room</div>
@@ -289,7 +294,7 @@ const Registration = () => {
                 placeholder="Enter Your email "
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                // disabled
+                disabled
                 required
               />
               {formik.touched.email && formik.errors.email ? (
@@ -499,9 +504,18 @@ const Registration = () => {
                 onBlur={formik.handleBlur}
               />
             </div>
+
+            <ReCAPTCHA
+            sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+            onChange={handleRecaptcha}
+            className="col-md-12"/>
             <div className="col-md-12">
               {!isLoading && (
-                <button type="submit" className="submit btn btn-lg btn-block">
+                <button 
+                  type="submit"           
+                  disabled={!isVerified}
+                  className="submit btn btn-lg btn-block"
+                >
                   Continue to Pay
                 </button>
               )}
