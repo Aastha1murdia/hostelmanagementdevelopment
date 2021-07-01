@@ -98,6 +98,9 @@ function Home() {
           <span className="sr-only">Next</span>
         </a>
       </div>
+      <section className="text-center py-3" >
+      <h1 className="text-left">Locate on Map <i className=" fas fa-map-marker-alt"></i></h1>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3627.7904786757226!2d73.73150791455285!3d24.596426084179175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3967e5e8557490a1%3A0x3300ced03e53b3e2!2sCollege%20of%20Technology%20and%20Engineering!5e0!3m2!1sen!2sin!4v1625154065141!5m2!1sen!2sin" width="1510" height="350" allowfullscreen="" loading="lazy"></iframe></section>
       <Footer />
     </>
   );

@@ -2,9 +2,10 @@
   box-sizing: border-box;
 }
 .about-body {
-  width: 100vw;
+  width: 98.5vw;
   overflow-x: hidden;
 }
+
 h2 {
   color: white;
   font-size: 30px;

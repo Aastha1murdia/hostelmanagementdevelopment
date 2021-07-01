@@ -49,6 +49,7 @@ function Login() {
         const data = {
           email: values.email,
           password: values.password,
+          name: responseData.fname,
           image: responseData.image,
         };
         localStorage.setItem("login", JSON.stringify(data));

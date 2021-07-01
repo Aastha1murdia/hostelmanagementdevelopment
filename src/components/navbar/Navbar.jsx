@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { Tooltip,OverlayTrigger } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Navbar.css";
 const Navbar = () => {
   useEffect(() => {
     handleLogout();
   }, []);
+
+  const [profileName,setProfileName]=useState("");
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      {`Hello ${profileName}`}
+    </Tooltip>
+  );
 
   const [whatisup, setWhatIsUp] = useState("LOG IN");
   const [imageUrl, setImageUrl] = useState("");
@@ -19,6 +27,7 @@ const Navbar = () => {
     if (data) {
       setWhatIsUp("LOG OUT");
       setImageUrl(dataLogin.image);
+      setProfileName(dataLogin.name);
     }
   };
   // 
@@ -106,13 +115,21 @@ const Navbar = () => {
               </li>
               {imageUrl && (
                 <li className="nav-item ">
-                  <img
-                    src={imageUrl}
-                    height="60"
-                    width="60"
-                    className="image-profile"
-                    alt=""
-                  />
+                <OverlayTrigger
+                    placement="bottom"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={renderTooltip}
+                  >
+                    <img
+                      src={imageUrl}
+                      height="60"
+                      width="60"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="bottom" 
+                      className="image-profile"
+                      alt=""
+                    />
+                  </OverlayTrigger>
                 </li>
               )}
             </ul>

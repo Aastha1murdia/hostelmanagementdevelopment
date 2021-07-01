@@ -5,7 +5,7 @@ import Footer from "../footer/Footer";
 import Card from "../card/Card";
 function About() {
   return (
-    <>
+    <div className="abt-bdy">
       <Navbar />
       <div className="about-body ">
         <h2 className="mt-3">College Of Technology And Engineering</h2>
@@ -31,7 +31,6 @@ function About() {
         <h4 className="hostel">Hostels</h4>
         <div className="containter">
           <div className="row ">
-            {/* <div className=" col-md-12 cards-class mt-5 "> */}
             <div className="mb-5 col-md-4 col-sm-12">
               <Card
                 hostel="Netaji Subhash Chandra Bose Hostel"
@@ -62,8 +61,6 @@ function About() {
                 mess="30000 Rs"
               />
             </div>
-            {/* </div> */}
-            {/* <div className=" col-md-12 mt-5 mb-5 cards-class "> */}
             <div className="mb-5 col-md-4 col-sm-12">
               <Card
                 hostel="PHD Hostel"
@@ -95,11 +92,10 @@ function About() {
               />
             </div>
           </div>
-          {/* </div> */}
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 
