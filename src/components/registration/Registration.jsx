@@ -17,24 +17,29 @@ const Registration = () => {
   const [hostel, setHostel] = useState("select");
   const [isDisable, setDisable] = useState(false);
   const location = useLocation();
-  const [isVerified,setVerified]=useState(false);
+  const history = useHistory();
+  const [isVerified, setVerified] = useState(false);
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
-    formik.values.fname = location.state.fname;
-    formik.values.lname = location.state.lname;
-    formik.values.dname = location.state.dname;
-    formik.values.mname = location.state.mname;
-    formik.values.email = location.state.email;
-    formik.values.mobile = location.state.mobile;
-    formik.values.address = location.state.address;
-    setRadio(location.state.gender);
-    setDropdown(location.state.year);
+    if (!location.state) {
+      history.push("/login");
+    } else {
+      formik.values.fname = location.state.fname;
+      formik.values.lname = location.state.lname;
+      formik.values.dname = location.state.dname;
+      formik.values.mname = location.state.mname;
+      formik.values.email = location.state.email;
+      formik.values.mobile = location.state.mobile;
+      formik.values.address = location.state.address;
+      setRadio(location.state.gender);
+      setDropdown(location.state.year);
+    }
   }, []);
 
-  const handleRecaptcha=async(e)=>{
-      setVerified(true);
-  }
+  const handleRecaptcha = async (e) => {
+    setVerified(true);
+  };
 
   const validate = (values) => {
     let errors = {};
@@ -171,7 +176,7 @@ const Registration = () => {
 
   return (
     <>
-      <div >
+      <div>
         <Navbar />
         <section className="border-class form-registration my-5 mx-auto col-md-9 ">
           <div className="register-heading ">Book Your Room</div>
@@ -506,13 +511,14 @@ const Registration = () => {
             </div>
 
             <ReCAPTCHA
-            sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-            onChange={handleRecaptcha}
-            className="col-md-12"/>
+              sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+              onChange={handleRecaptcha}
+              className="col-md-12"
+            />
             <div className="col-md-12">
               {!isLoading && (
-                <button 
-                  type="submit"           
+                <button
+                  type="submit"
                   disabled={!isVerified}
                   className="submit btn btn-lg btn-block"
                 >

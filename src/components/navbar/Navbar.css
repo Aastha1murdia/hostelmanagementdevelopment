@@ -9,7 +9,6 @@
   background-color: #3c4d8d;
 }
 
-
 .links-nav {
   color: white;
   padding: 30px 1.5vw;
@@ -38,4 +37,10 @@
 
 .image-class {
   padding: 15px 10px;
+}
+
+.navbar-body {
+  /* position: absolute; */
+  width: 100%;
+  top: 100;
 }
