@@ -7,8 +7,8 @@ function Footer() {
         <div>
           <h4 className="footerheading">About Us</h4>
           <div className="about">
-            <p>Amet labore ut eiusmod ipsum in sint dolor </p>
-            <p>Amet labore ut eiusmod ipsum in sint dolor </p>
+            <p>College hostel management is a basic website that receives student<br/> information from sutdent section </p>
+            <p>This site is for providing facilities to students that to pay their<br/> hostel fee & get the alloted rooms. </p>
           </div>
           <p className="copyright">HMS©2021</p>
         </div>
