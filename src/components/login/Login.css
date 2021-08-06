@@ -55,3 +55,16 @@ button:disabled {
   width: 40vw;
   margin-top: 7vw;
 }
+
+@media(max-width:768px){
+  .hero-login-form{
+    height:50vw;
+    width:75vw;
+  }
+  .login-form-section {
+    float: right;
+    margin-right: 0vw;
+    margin-top: 2.5vw;
+    margin-bottom:3vw;
+  }
+}
