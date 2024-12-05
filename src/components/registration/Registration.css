@@ -1,0 +1,29 @@
+
+.error {
+  color: tomato;
+  font-size: 1.2rem;
+}
+
+.register-heading {
+  font-size: 3.5vw;
+  color: #3c4d8d;
+  font-family: "Rubik", sans-serif;
+  margin-left: 23vw;
+  padding: 15px 0px;
+}
+
+select {
+  padding: 10px 0px;
+}
+.form-controls-registration {
+  height: 45px;
+}
+.labels-registration {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.form-registration {
+  background-color: #eeeeee;
+}

@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+.border-class {
+  border: 1.5px solid #3c4d8d;
+  border-radius: 10px;
+}
+
+.bg-darks {
+  background-color: #3c4d8d;
+}
+
+.links-nav {
+  color: white;
+  padding: 30px 1.5vw;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+  font-size: 1.2rem;
+  word-spacing: 2px;
+  border-bottom: 3px solid transparent;
+}
+.image-profile {
+  margin-top: -18px;
+  border-radius: 40px;
+}
+
+.links-nav:hover {
+  color: white;
+  border-bottom: 3px solid white;
+}
+
+.active-classs {
+  color: #e9c603;
+}
+.active-classs:hover {
+  color: #e9c603;
+}
+
+.image-class {
+  padding: 15px 10px;
+}
+
+.navbar-body {
+  /* position: absolute; */
+  width: 100%;
+  top: 100;
+}
